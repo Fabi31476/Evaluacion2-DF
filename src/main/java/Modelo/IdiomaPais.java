@@ -4,39 +4,26 @@
  */
 package Modelo;
 
-/**
- *
- * @author fchmm
- */
 public class IdiomaPais {
-    
-    private String idioma;
-    private boolean oficial;
-    private double porcentaje;
-    // Getters y setters
+    private final String idioma;
+    private final boolean esOficial;
+    private final double porcentaje;
+
+    public IdiomaPais(String idioma, boolean esOficial, double porcentaje) {
+        this.idioma = idioma;
+        this.esOficial = esOficial;
+        this.porcentaje = porcentaje;
+    }
+
     public String getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
-    }
-
-    public boolean isOficial() {
-        return oficial;
-    }
-
-    public void setOficial(boolean oficial) {
-        this.oficial = oficial;
+    public boolean isEsOficial() {
+        return esOficial;
     }
 
     public double getPorcentaje() {
         return porcentaje;
     }
-
-    public void setPorcentaje(double porcentaje) {
-        this.porcentaje = porcentaje;
-    }
-   
-    
 }
