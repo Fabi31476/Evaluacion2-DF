@@ -14,7 +14,7 @@ public class IdiomaPais {
         this.esOficial = esOficial;
         this.porcentaje = porcentaje;
     }
-
+// algo algo 
     public String getIdioma() {
         return idioma;
     }
