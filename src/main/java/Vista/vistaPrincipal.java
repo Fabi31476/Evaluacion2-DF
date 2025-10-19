@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
+import Modelo.Pais;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,24 +13,37 @@ import javax.swing.table.DefaultTableModel;
  */
 
 public class vistaPrincipal extends javax.swing.JFrame {
-    private final JTable tablaPais;
+    private final ArrayList<Pais> listaPaises = new ArrayList<>();
+    // Dentro de vistaPrincipal.java
+public javax.swing.JButton getBtnAgregar() { return btnAgregar; }
+public javax.swing.JButton getBtnBuscar() { return btnBuscar; }
+public javax.swing.JButton getBtnConsultar() { return btnConsultar; }
+public javax.swing.JButton getBtnModificar() { return btnModificar; }
+
+public javax.swing.JTextField getTxtCodigo() { return txtCodigo; }
+public javax.swing.JTextField getTxtNombre() { return txtNombre; }
+public javax.swing.JTextField getTxtContinente() { return txtContinente; }
+public javax.swing.JTextField getTxtPoblacion() { return txtPoblacion; }
+
+public javax.swing.JTable getTablaPais() { return TablaPais; }
+
+public void limpiarCampos() {
+    txtCodigo.setText("");
+    txtNombre.setText("");
+    txtContinente.setText("");
+    txtPoblacion.setText("");
+}
 
     public vistaPrincipal() {
-    initComponents(); // 👈 agrega esta línea al inicio
-    this.setLocationRelativeTo(null); // centra la ventana
-    this.setTitle("Ejemplo de Tabla");
+    initComponents();
+    this.setLocationRelativeTo(null); 
+    this.setTitle("Registro Poblacional Internacional");
+}
 
 
-        String[] titulos = {"ID", "Nombre", "Edad", "País"};
-        DefaultTableModel modelo = new DefaultTableModel(null, titulos);
-        tablaPais = new JTable(modelo);
 
-        JScrollPane scroll = new JScrollPane(tablaPais);
-        scroll.setBounds(20, 20, 400, 200);
-        this.add(scroll);
 
-        this.setVisible(true);
-    }
+    
 
     /**
      * Creates new form vistaPrincipal
@@ -60,6 +73,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         txtRegistroPoblacionalInternacional = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaPais = new javax.swing.JTable();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,37 +128,44 @@ public class vistaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(TablaPais);
 
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblContinente, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblPoblacion, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblCodigo)
-                                .addComponent(lblNombre)))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo)
-                            .addComponent(txtNombre)
-                            .addComponent(txtContinente)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblContinente, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblPoblacion, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCodigo)
+                                        .addComponent(lblNombre)))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCodigo)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtContinente)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnBuscar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnAgregar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnConsultar)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConsultar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(39, 39, 39)
                         .addComponent(txtRegistroPoblacionalInternacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,11 +174,15 @@ public class vistaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(txtRegistroPoblacionalInternacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCodigo)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,11 +197,10 @@ public class vistaPrincipal extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPoblacion)
-                            .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
+                            .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar)
+                        .addGap(26, 26, 26)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnConsultar)
@@ -201,6 +225,31 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        try {
+        String codigo = txtCodigo.getText();
+        String nombre = txtNombre.getText();
+        String continente = txtContinente.getText();
+        int poblacion = Integer.parseInt(txtPoblacion.getText());
+
+        // Por ahora sin capital, puedes agregar un campo después
+        String capital = "Desconocida";
+
+        Pais nuevo = new Pais(codigo, nombre, continente, poblacion, capital);
+        listaPaises.add(nuevo);
+
+        DefaultTableModel model = (DefaultTableModel) TablaPais.getModel();
+        model.addRow(new Object[]{codigo, nombre, continente, poblacion});
+
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtContinente.setText("");
+        txtPoblacion.setText("");
+
+        javax.swing.JOptionPane.showMessageDialog(this, "País agregado correctamente");
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error: la población debe ser un número");
+    }
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     /**
@@ -232,13 +281,18 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new vistaPrincipal().setVisible(true);
-        });
+   vistaPrincipal vista = new vistaPrincipal();
+Controlador.ControladorPais controlador = new Controlador.ControladorPais(vista);
+vista.setVisible(true);
+
+});
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaPais;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollPane2;
