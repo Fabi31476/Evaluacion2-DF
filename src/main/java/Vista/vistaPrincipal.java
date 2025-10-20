@@ -38,6 +38,8 @@ public void limpiarCampos() {
     initComponents();
     this.setLocationRelativeTo(null); 
     this.setTitle("Registro Poblacional Internacional");
+    
+    txtRegistroPoblacionalInternacional.setEditable(false);
 }
 
 
