@@ -4,44 +4,44 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
-
 public class Pais {
-    private final int codigo;
-    private final String nombrePais;
-    private final String continente;
-    private final int poblacion;
-    private final ArrayList<IdiomaPais> idiomas;
+    private String codigo;
+    private String nombre;
+    private String continente;
+    private int poblacion;
+    private double pib;
+    private String formaGobierno;
+    private String capital;
 
-    public Pais(int codigo, String nombrePais, String continente, int poblacion) {
+    public Pais(String codigo, String nombre, String continente, int poblacion, double pib, String formaGobierno, String capital) {
         this.codigo = codigo;
-        this.nombrePais = nombrePais;
+        this.nombre = nombre;
         this.continente = continente;
         this.poblacion = poblacion;
-        this.idiomas = new ArrayList<>();
+        this.pib = pib;
+        this.formaGobierno = formaGobierno;
+        this.capital = capital;
     }
 
-    public int getCodigo() {
-        return codigo;
+    // Constructor simplificado (el que estabas usando)
+    public Pais(String codigo, String nombre, String continente, int poblacion, String capital) {
+        this(codigo, nombre, continente, poblacion, 0, "Desconocida", capital);
     }
 
-    public String getNombrePais() {
-        return nombrePais;
-    }
+    // Getters y setters
+    public String getCodigo() { return codigo; }
+    public String getNombre() { return nombre; }
+    public String getContinente() { return continente; }
+    public int getPoblacion() { return poblacion; }
+    public double getPib() { return pib; }
+    public String getFormaGobierno() { return formaGobierno; }
+    public String getCapital() { return capital; }
 
-    public String getContinente() {
-        return continente;
-    }
-
-    public int getPoblacion() {
-        return poblacion;
-    }
-
-    public ArrayList<IdiomaPais> getIdiomas() {
-        return idiomas;
-    }
-
-    public void agregarIdioma(IdiomaPais idioma) {
-        idiomas.add(idioma);
-    }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setContinente(String continente) { this.continente = continente; }
+    public void setPoblacion(int poblacion) { this.poblacion = poblacion; }
+    public void setPib(double pib) { this.pib = pib; }
+    public void setFormaGobierno(String formaGobierno) { this.formaGobierno = formaGobierno; }
+    public void setCapital(String capital) { this.capital = capital; }
 }
